@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './App.css';
 import TaskItem from './components/TaskItem';
 import TaskItemComplete from './components/TaskItemComplete';
@@ -6,6 +6,7 @@ import TaskItemComplete from './components/TaskItemComplete';
 const App = () => {
     const [taskList, setTaskList] = useState([]);
     const [taskListCompleted, setTaskListCompleted] = useState([]);
+    const ref = useRef(null);
     
     const getTime = () => {
         const date = new Date();
@@ -25,27 +26,28 @@ const App = () => {
         const task = taskObj.todoItemInput;
 
         setTaskList([...taskList, {id: idGen(), item: task, date: getTime()}]);
+        form.reset();
     }
 
     const taskRemove = (id) => {
-        setTaskList(taskList.filter(item => item.id !== id))
+        setTaskList(taskList.filter(item => item.id !== id));
     }
 
     const taskComplete = (id) => {
         setTaskListCompleted([...taskListCompleted, taskList[taskList.findIndex((item) => item.id === id)]])
-        setTaskList(taskList.filter(item => item.id !== id))
-        console.log(taskListCompleted)
+        setTaskList(taskList.filter(item => item.id !== id));
+        console.log(taskListCompleted);
     }
 
     const taskRemoveCompleted = (id) => {
-        setTaskListCompleted(taskListCompleted.filter(item => item.id !== id))
+        setTaskListCompleted(taskListCompleted.filter(item => item.id !== id));
     }
 
 
     return (
         <div method="post" className="App">
             <h1>To Do List</h1>
-            <form onSubmit={taskAdd}>
+            <form onSubmit={taskAdd} ref={ref}>
                 <label form="todo-item-input">task:</label>
                 <input type="text" id="todo-item-input" name="todoItemInput" />
                 <input type="submit" id="submitBtn" value="Add" />
