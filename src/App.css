@@ -1,3 +1,16 @@
 .App {
     text-align: center;
 }
+
+form * {
+    margin: 20px;
+}
+
+#todo-item-input {
+    padding: 10px 20px;
+    width: 80%;
+}
+
+#submitBtn {
+    padding: 10px 20px;
+}

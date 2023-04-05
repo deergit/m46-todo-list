@@ -44,11 +44,12 @@ const App = () => {
             <form onSubmit={taskAdd}>
                 <label form="todo-item-input">task:</label>
                 <input type="text" id="todo-item-input" name="todoItemInput" />
-                <input type="submit" value="Add" />
+                <input type="submit" id="submitBtn" value="Add" />
             </form>
 
+            <h2>Tasks to do:</h2>
             {taskList.length === 0 ? 
-                <h2>Add some tasks!</h2> :
+                <h3>Add some tasks!</h3> :
                 taskList.map((task, index) => {
                     return (
                         <TaskItem key={index} task={task} taskRemove={taskRemove} taskComplete={taskComplete} />
@@ -56,8 +57,9 @@ const App = () => {
                 })
             }
 
+            <h2>Tasks completed:</h2>
             {taskListCompleted.length === 0 ? 
-                <h2>And finish some too!</h2> :
+                <h3>And finish some too!</h3> :
                 taskListCompleted.map((task, index) => {
                     return (
                         <TaskItemComplete key={index} task={task} taskRemove={taskRemove} />
