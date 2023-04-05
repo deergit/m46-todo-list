@@ -9,7 +9,6 @@ const TaskItem = (props) => {
 
             <div className="taskControls">
                 <p>Date added: {props.task.date}</p>
-                <button>Edit</button>
                 <button onClick={() => props.taskRemove(props.task.id)}>Remove</button>
             </div>
         </div>
