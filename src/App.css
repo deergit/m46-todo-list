@@ -21,13 +21,33 @@ form * {
     justify-content: space-evenly;
 }
 
+.listCol {
+    flex: 1 0 0;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
 .taskContainer {
     margin: 20px;
     padding: 10px;
+
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+.taskContent {
+    margin: 20px;
 }
 
 .taskControls {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+    align-items: center;
+}
+
+.taskControls button {
+    padding: 5px 10px;
 }

@@ -54,7 +54,7 @@ const App = () => {
             </form>
 
             <div id="listContainer">
-                <div id="leftCol">
+                <div className="leftCol listCol">
                     <h2>Tasks to do:</h2>
                     {taskList.length === 0 ? 
                         <h3>Add some tasks!</h3> :
@@ -66,7 +66,7 @@ const App = () => {
                     }
                 </div>
 
-                <div id="rightCol">
+                <div className="rightCol listCol">
                     <h2>Tasks completed:</h2>
                     {taskListCompleted.length === 0 ? 
                         <h3>And finish some too!</h3> :
