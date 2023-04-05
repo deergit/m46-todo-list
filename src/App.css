@@ -14,3 +14,9 @@ form * {
 #submitBtn {
     padding: 10px 20px;
 }
+
+#listContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}

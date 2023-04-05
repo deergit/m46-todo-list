@@ -37,6 +37,10 @@ const App = () => {
         console.log(taskListCompleted)
     }
 
+    const taskRemoveCompleted = (id) => {
+        setTaskListCompleted(taskListCompleted.filter(item => item.id !== id))
+    }
+
 
     return (
         <div method="post" className="App">
@@ -47,25 +51,31 @@ const App = () => {
                 <input type="submit" id="submitBtn" value="Add" />
             </form>
 
-            <h2>Tasks to do:</h2>
-            {taskList.length === 0 ? 
-                <h3>Add some tasks!</h3> :
-                taskList.map((task, index) => {
-                    return (
-                        <TaskItem key={index} task={task} taskRemove={taskRemove} taskComplete={taskComplete} />
-                    )
-                })
-            }
+            <div id="listContainer">
+                <div id="leftCol">
+                    <h2>Tasks to do:</h2>
+                    {taskList.length === 0 ? 
+                        <h3>Add some tasks!</h3> :
+                        taskList.map((task, index) => {
+                            return (
+                                <TaskItem key={index} task={task} taskRemove={taskRemove} taskComplete={taskComplete} list={taskList} />
+                            )
+                        })
+                    }
+                </div>
 
-            <h2>Tasks completed:</h2>
-            {taskListCompleted.length === 0 ? 
-                <h3>And finish some too!</h3> :
-                taskListCompleted.map((task, index) => {
-                    return (
-                        <TaskItemComplete key={index} task={task} taskRemove={taskRemove} />
-                    )
-                })
-            }
+                <div id="rightCol">
+                    <h2>Tasks completed:</h2>
+                    {taskListCompleted.length === 0 ? 
+                        <h3>And finish some too!</h3> :
+                        taskListCompleted.map((task, index) => {
+                            return (
+                                <TaskItemComplete key={index} task={task} taskRemove={taskRemoveCompleted} list={taskList} />
+                            )
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }

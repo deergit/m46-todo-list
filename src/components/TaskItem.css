@@ -1,0 +1,10 @@
+.taskContainer {
+    margin: 20px;
+    padding: 10px;
+}
+
+.taskControls {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}

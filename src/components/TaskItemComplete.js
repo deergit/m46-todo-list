@@ -1,4 +1,5 @@
 import { Textfit } from "react-textfit";
+import "./TaskItemComplete.css";
 
 const TaskItem = (props) => {
     return (
