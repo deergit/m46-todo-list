@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import TaskItem from './components/TaskItem';
+import TaskItemComplete from './components/TaskItemComplete';
 
 const App = () => {
     const [taskList, setTaskList] = useState([]);
+    const [taskListCompleted, setTaskListCompleted] = useState([]);
     
     const getTime = () => {
         const date = new Date();
@@ -23,11 +25,16 @@ const App = () => {
         const task = taskObj.todoItemInput;
 
         setTaskList([...taskList, {id: idGen(), item: task, date: getTime()}]);
-        console.log(taskList);
     }
 
     const taskRemove = (id) => {
         setTaskList(taskList.filter(item => item.id !== id))
+    }
+
+    const taskComplete = (id) => {
+        setTaskListCompleted([...taskListCompleted, taskList[taskList.findIndex((item) => item.id === id)]])
+        setTaskList(taskList.filter(item => item.id !== id))
+        console.log(taskListCompleted)
     }
 
 
@@ -44,9 +51,19 @@ const App = () => {
                 <h2>Add some tasks!</h2> :
                 taskList.map((task, index) => {
                     return (
-                        <TaskItem key={index} task={task} taskRemove={taskRemove} />
+                        <TaskItem key={index} task={task} taskRemove={taskRemove} taskComplete={taskComplete} />
                     )
-                })}
+                })
+            }
+
+            {taskListCompleted.length === 0 ? 
+                <h2>And finish some too!</h2> :
+                taskListCompleted.map((task, index) => {
+                    return (
+                        <TaskItemComplete key={index} task={task} taskRemove={taskRemove} />
+                    )
+                })
+            }
         </div>
     );
 }
