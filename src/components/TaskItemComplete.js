@@ -1,10 +1,8 @@
-import { Textfit } from "react-textfit";
-
 const TaskItem = (props) => {
     return (
         <div className="taskContainer">
             <div className="taskContent">
-                <Textfit>{props.task.item}</Textfit>
+                <p>{props.task.item}</p>
             </div>
 
             <div className="taskControls">

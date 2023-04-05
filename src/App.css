@@ -33,7 +33,7 @@ form * {
     margin: 20px;
     padding: 10px;
 
-    border: 2px solid red;
+    border: 2px solid grey;
     border-radius: 10px;
 }
 
@@ -46,6 +46,10 @@ form * {
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
+}
+
+.taskControls p {
+    color: grey;
 }
 
 .taskControls button {
